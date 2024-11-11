@@ -1,0 +1,34 @@
+//GC
+public class GenericQueue<E> extends MyLinkedList<E> {
+
+    public void enqueue(E element) {
+        addLast(element);
+    }
+
+    public E dequeue() {
+        return removeFirst();
+    }
+
+    public static void main(String[] args) {
+        GenericQueue<Integer> queue = new GenericQueue<>();
+        System.out.println("Enqueue 1, 2, 3, 4:");
+        queue.enqueue(1);
+        queue.enqueue(2);
+        queue.enqueue(3);
+        queue.enqueue(4);
+        System.out.println("Queue after enqueuing: " + queue);
+
+        System.out.println("Dequeue:");
+        System.out.println("Dequeued element: " + queue.dequeue());
+        System.out.println("Queue after dequeuing: " + queue);
+
+        System.out.println("Enqueue 5:");
+        queue.enqueue(5);
+        System.out.println("Queue after enqueuing 5: " + queue);
+
+        System.out.println("Dequeue:");
+        System.out.println("Dequeued element: " + queue.dequeue());
+        System.out.println("Queue after dequeuing: " + queue);
+    }
+}
+
