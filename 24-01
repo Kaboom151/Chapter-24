@@ -1,0 +1,68 @@
+//24-01
+import java.util.*;
+
+public class Exercise24_01 {
+  public static void main(String[] args) {
+    new Exercise24_01();
+  }
+
+  public Exercise24_01() {
+    String[] name1 = {"Tom", "George", "Peter", "Jean", "Jane"};
+    String[] name2 = {"Tom", "George", "Michael", "Michelle", "Daniel"};
+
+    MyList<String> list1 = new MyArrayList<>(name1);
+    MyList<String> list2 = new MyArrayList<>(name2);
+    System.out.println("list1: " + list1);
+    System.out.println("list2: " + list2);
+    list1.addAll(list2);
+    System.out.println("After addAll: " + list1 + "\n");
+
+    list1 = new MyArrayList<>(name1);
+    list2 = new MyArrayList<>(name2);
+    System.out.println("list1: " + list1);
+    System.out.println("list2: " + list2);
+    list1.removeAll(list2);
+    System.out.println("After removeAll: " + list1 + "\n");
+
+    list1 = new MyArrayList<>(name1);
+    list2 = new MyArrayList<>(name2);
+    System.out.println("list1: " + list1);
+    System.out.println("list2: " + list2);
+    list1.retainAll(list2);
+    System.out.println("After retainAll: " + list1 + "\n");
+  }
+}
+
+interface MyList<E> extends Collection<E> {
+  public void addAll(MyList<E> list);
+  public void removeAll(MyList<E> list);
+  public void retainAll(MyList<E> list);
+}
+
+class MyArrayList<E> extends ArrayList<E> implements MyList<E> {
+  public MyArrayList(E[] elements) {
+    super(Arrays.asList(elements));
+  }
+
+  @Override
+  public void addAll(MyList<E> list) {
+    for (E e : list) {
+      add(e);
+    }
+  }
+
+  @Override
+  public void removeAll(MyList<E> list) {
+    for (E e : list) {
+      remove(e);
+    }
+  }
+
+  @Override
+  public void retainAll(MyList<E> list) {
+    super.retainAll(list);
+  }
+}
+
+
+
